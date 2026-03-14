@@ -1,0 +1,97 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 300;
+  padding: 20px;
+  animation: fadeIn 0.2s ease;
+}
+
+.modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px 24px;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  opacity: 0;
+}
+
+.iconWrap {
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255, 181, 71, 0.1);
+  border: 1px solid rgba(255, 181, 71, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+}
+
+.dangerIcon {
+  background: rgba(255, 95, 95, 0.1);
+  border-color: rgba(255, 95, 95, 0.25);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 8px;
+}
+
+.message {
+  font-size: 0.9rem;
+  color: var(--fg-dim);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.cancelBtn {
+  font-size: 0.9rem;
+  padding: 9px 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--fg-dim);
+  transition: border-color var(--transition), color var(--transition);
+  min-width: 90px;
+}
+
+.cancelBtn:hover {
+  border-color: var(--fg-dim);
+  color: var(--fg);
+}
+
+.confirmBtn {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 9px 22px;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #0F0F11;
+  transition: opacity var(--transition);
+  min-width: 90px;
+}
+
+.confirmBtn.danger {
+  background: var(--overdue);
+  color: #fff;
+}
+
+.confirmBtn:hover { opacity: 0.85; }

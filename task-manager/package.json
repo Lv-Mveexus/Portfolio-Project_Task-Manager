@@ -1,0 +1,62 @@
+{
+  "name": "taskflow",
+  "version": "1.0.0",
+  "description": "TaskFlow — Desktop Task Manager",
+  "main": "electron/main.js",
+  "scripts": {
+    "predev": "lsof -ti:5000 | xargs --no-run-if-empty kill -9 || true",
+    "start":  "node index.js",
+    "dev":        "nodemon index.js",
+    "server:dev":  "cd server && npm run dev",
+    "client:dev":  "cd client && npm run dev",
+    "client:build":"cd client && npm run build",
+    "build":       "npm run client:build && electron-builder",
+    "build:win":   "npm run client:build && electron-builder --win",
+    "build:mac":   "npm run client:build && electron-builder --mac",
+    "build:linux": "npm run client:build && electron-builder --linux"
+  },
+  "build": {
+    "appId": "com.taskflow.app",
+    "productName": "TaskFlow",
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "electron/**/*",
+      "client/dist/**/*",
+      "server/**/*",
+      "!server/node_modules/.cache"
+    ],
+    "extraResources": [
+      {
+        "from": "server",
+        "to":   "server",
+        "filter": ["**/*", "!node_modules/.cache"]
+      }
+    ],
+    "win": {
+      "target": ["nsis"],
+      "icon": "electron/assets/icon.ico"
+    },
+    "mac": {
+      "target": ["dmg"],
+      "icon": "electron/assets/icon.icns",
+      "category": "public.app-category.productivity"
+    },
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "icon": "electron/assets/icon.png",
+      "category": "Office"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3",
+    "wait-on": "^7.2.0"
+  }
+}
